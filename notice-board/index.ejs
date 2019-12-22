@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notice Board</title>
+    <link rel="stylesheet" href="./style.css", type="text/css">
+    <script>
+        function init() {
+            let id = localStorage.getItem('id');
+            if (id ==null) {
+                location.href = './login';
+            }
+            document.querySelector('#id').textContent = 'ID:' + id;
+            document.querySelector('#id_input').value = id;
+        }
+    </script>
+</head>
+<body onload="init();">
+    <h1>Notice Board</h1>
+    <div role="main">
+        <p> Maximum number of messages is 10</p>
+        <form action="/" method="post">
+            <p>
+                <span id="id"></span>
+                <p><%=content %></p>
+                <input type="hidden" name="id" id="id_input" value="">
+            </p>
+            <p>
+                <input type="text" name="msg">
+                <input type="submit" value="send">
+            </p>
+        </form>
+        <hr>
+        <p>
+            <table style="width: 85%;">
+                <% for(let i in data) { %>
+                    <%- include('data_item', {val: data[i]}) %>
+                <% } %>
+            </table>
+        </p>
+    </div>
+</body>
+</html>
