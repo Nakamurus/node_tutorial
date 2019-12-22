@@ -1,0 +1,26 @@
+<body>
+    <head>
+        <h1><%=title %></h1>
+    </head>
+    <div role="main">
+        <p><%=content %></p>
+        <p>
+            <table style="width: 400px">
+                <tr>
+                    <th>Message!</th>
+                </tr>
+                <tr>
+                    <td>
+                        <%=data.msg %>
+                    </td>
+                </tr>
+            </table>
+        </p>
+        <p>Your lasta message:<%=cookie_data%></p>
+        <form action="" method="post">
+            <p>MESSAGE <input type="text" name="msg">
+                <input type="submit" value="send">
+            </p>
+        </form>
+    </div>
+</body>
