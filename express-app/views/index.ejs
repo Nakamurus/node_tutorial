@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title %></title>
+</head>
+<body>
+    <h1><%=title %></h1>
+    <div role="main">
+        <p>
+            <%-content %>
+        </p>
+        <form action="/" method="post">
+            <p>
+                <input type="text" name="message">
+                <input type="submit" value="send">
+            </p>
+        </form>
+
+        <p><%-content %></p>
+        <p>
+            <table style="width: 85%;">
+            <% for (let key in data) { %>
+                <%-include('data_items', {
+                    key: key,
+                    val: data[key]
+                }) %>
+            <% } %>
+            </table>
+        </p>
+    </div>
+</body>
+</html>
