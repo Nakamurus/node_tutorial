@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title%></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#btn').click(function(){
+                let n = $('#num').val();
+                $.getJSON(`/ajax?id=${n}`, function(json) {
+                    let msg =  `<table>
+                                    <tr>
+                                        <th>名前</th>
+                                        <td>${json.name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>年齢</th>
+                                        <td>${json.age}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>メール</th>
+                                        <td>${json.mail}</td>
+                                    </tr>
+                                </table>`
+                    $('#msg').html(msg);
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1> <%= title %></h1>
+    <div role="main">
+        <p id="msg"><%- content %></p>
+        <label for="num">0～2の数字を入力</label>
+        <input type="number" name="num" id="num" min="0" max="2">
+        <input type="button" id="btn" value="GET!">
+    </div>
+</body>
+</html>
