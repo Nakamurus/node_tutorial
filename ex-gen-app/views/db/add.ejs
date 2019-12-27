@@ -15,15 +15,17 @@
             <table>
                 <tr>
                     <th>NAME</th>
-                    <td><input type="text" name="name"></td>
+                    <td><input type="text" name="name" value="<%= form.name %>"></td>
+                    <!-- value="<%= form.name %>"は、フォーム再入力への対応
+                         サーバー側でformという変数にフォームの値を用意し、表示する -->
                 </tr>
                 <tr>
                     <th>MAIL</th>
-                    <td><input type="email" name="mail"></td>
+                    <td><input type="email" name="mail" value="<%= form.mail %>"></td>
                 </tr>
                 <tr>
                     <th>AGE</th>
-                    <td><input type="number" name="age"></td>
+                    <td><input type="number" name="age" value="<%= form.age %>"></td>
                 </tr>
                 <tr>
                     <th></th>

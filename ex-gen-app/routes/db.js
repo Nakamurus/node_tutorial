@@ -1,4 +1,6 @@
 const express = require('express');
+const { check, validationResult } = require('express-validator');
+
 const router = express.Router();
 
 const sqlite3 = require('sqlite3');
@@ -25,12 +27,22 @@ router.get('/', (req, res, next)=> {
 router.get('/add', (req, res, next) => {
     let data = {
         title: 'DB/Add',
-        content: 'Input new record:'
+        content: 'Input new record:',
+        form: {name: '', mail:'', age: 0}
     }
     res.render('db/add', data);
 });
 
-router.post('/add', (req, res, next) => {
+router.post('/add', [
+    check('name').notEmpty().withMessage('Enter a name'),
+    check('mail').isEmail().withMessage('Enter your mail address'),
+    check('age').matches(/\d/).withMessage('Password must contain number')
+], (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+
     let nm = req.body.name;
     let ml = req.body.mail;
     let ag = req.body.age;
