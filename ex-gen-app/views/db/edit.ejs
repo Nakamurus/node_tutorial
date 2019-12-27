@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <div role="main">
+        <p><%= content %></p>
+        <form method="POST" action="/db/edit">
+            <input type="hidden" name="id" value="<%= mydata.id %>">
+            <table>
+                <tr>
+                    <th>NAME</th>
+                    <td>
+                        <input type="text" name="name" value="<%= mydata.name %>">
+                    </td>
+                </tr>
+                <tr>
+                    <th>MAIL</th>
+                    <td>
+                        <input type="email" name="mail" value="<%= mydata.mail %>">
+                    </td>
+                </tr>
+                <tr>
+                    <th>AGE</th>
+                    <td>
+                        <input type="number" name="age" value="<%= mydata.age %>">
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="submit" value="Update">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

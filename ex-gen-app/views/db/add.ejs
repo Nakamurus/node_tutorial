@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <h1><%= title %></h1>
+    <div role="main">
+        <p><%= content%></p>
+        <form method="POST", action="/db/add">
+            <table>
+                <tr>
+                    <th>NAME</th>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <th>MAIL</th>
+                    <td><input type="email" name="mail"></td>
+                </tr>
+                <tr>
+                    <th>AGE</th>
+                    <td><input type="number" name="age"></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><input type="submit" value="Create"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
