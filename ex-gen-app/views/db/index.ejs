@@ -19,8 +19,17 @@
                     <td><%= obj.mail %></td>
                     <td><%= obj.age %></td>
                 </tr>
-                <% } %>
+            <% } %>
         </table>
+        <div>
+            <span><a href="/db/1">&lt;&lt; First</a></span> <!--&lt;は <  -->
+            |
+            <span><a href="db/<%= pagination.page -1 %>">&lt;&lt; prev</a></span>
+            |
+            <span><a href="/db/<%= pagination.page + 1%>">Next &gt;&gt;</a></span> <!-- &gt; は > -->
+            |
+            <span><a href="/db/<%= pagination.pageCount %>">Last &gt;&gt;</a></span>
+        </div>
     </div>
 </body>
 </html>

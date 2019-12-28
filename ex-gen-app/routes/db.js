@@ -173,4 +173,23 @@ router.post('/find', (req, res, next) => {
     })
 })
 
+router.get('/:page', (req, res, next) => {
+    let pg = req.params.page;
+    pg *= 1;
+    if (pg < 1){pg = 1}
+    new MyData().fetchPage({page:pg, pageSize:3})
+    .then((collection) => {
+        let data = {
+            title: 'DB',
+            content: collection.toArray(),
+            pagination: collection.pagination
+        };
+        console.log(collection.pagination);
+        res.render('db/index', data);
+    })
+    .catch((err) => {
+        res.status(500).json({error: true, data: {message: err.message}})
+    });
+});
+
 module.exports = router;
