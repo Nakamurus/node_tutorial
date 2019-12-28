@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <h1><%= title %></h1>
+    <div role="main">
+        <p><%- content %></p>
+        <% if (mydata != null){ %>
+            <ul>
+                <li><%- mydata.id %></li>
+                <li><%- mydata.attributes.name %></li>
+                <li><%- mydata.attributes.mail %></li>
+                <li><%- mydata.attributes.age + ' old'%></li>
+            </ul>
+        <% } %>
+        <form action="/db/find" method="post">
+            <table>
+                <tr>
+                    <th>NAME</th>
+                    <td><input type="text" name="fstr" value="<%= form.fstr %>"></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><input type="submit" value="Search"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
